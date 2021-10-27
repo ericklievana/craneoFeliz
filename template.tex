@@ -1,11 +1,14 @@
-\documentclass[a4paper]{report}
+\documentclass[a4paper]{article}
 
 \usepackage{anyfontsize}
+\usepackage{fancyhdr}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{blindtext}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[fontsize=16]{fontsize}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
 \usepackage{wrapfig}
 \usepackage[colorlinks=true,allcolors=black]{hyperref}
 \usepackage{ragged2e}
@@ -24,68 +27,95 @@
 %Informacion de la revista
 %Contraportada
 
-\titleformat{\section}
-{\huge\bfseries}
-{}
-{0em}
-{}
-[{\titlerule[0.4pt]}]
+\urlstyle{same}
 
-\titleformat{\chapter}
-{\huge\bfseries\center}
+\titleformat{\subsection}
+{\huge\bfseries\center}%formatting
+{}%numbering
+{0em}%space between number and title
+{}%
+[{\titlerule[3pt]}]%
+
+\titleformat{\section}
+{\Huge\bfseries\center}
 {}
 {0em}
 {}
-[{\titlerule[0.4pt]}]
+[{\titlerule[3pt]}]
+
+\titlespacing{\subsection}
+{0pt}
+{0pt}
+{0pt}
 
 \titlespacing{\section}
 {0pt}
 {0pt}
-{1pt}
+{1em}
 
-\newlength{\myMheight}
-\settoheight{\myMheight}{M}
+%\newlength{\myMheight}
+%\settoheight{\myMheight}{M}
 
-\newcommand{\articulo}[3]{ \newpage
-\section{#1}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\rhead{}
+\chead{}
+\lhead{}
+\rfoot{}
+\lfoot{}
+\cfoot{\normalsize\textbf{\thepage}}
+
+\newcommand{\articulo}[3]{ \pagebreak
+\subsection{#1}
 \noindent
-{#2}
-\href{#3}{\includegraphics[height=\myMheight]{facebookLogo.png}}
+\begin{flushright}
+  \textbf{#2}
+  %\href{#3}{\includegraphics[height=\myMheight]{facebookLogo.png}}
+  \href{#3}{\includegraphics[height=1em]{facebookLogo.png}}
+\end{flushright}
 }
 
 \AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{portada.png}}}
+
 
 \begin{document}
 
 \newgeometry{margin=0cm}
 \pagenumbering{gobble}
 
-\begin{titlepage}
-  \begin{center}
-    \noindent
-    \includegraphics[width=\textwidth]{titulo.png}
-  \end{center}
-\end{titlepage}
+\begin{center}
+  \noindent
+  \includegraphics[width=\textwidth]{titulo.png}
+\end{center}
 
 \restoregeometry
 
-{
-  \AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{paper.jpg}}}
-}
+{\AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{paper2.png}}}}
+
+\section*{Nota Literaria}
+Buenas tardes, buenas noches, buenos dias, señoras y señores.
+
+\section*{Agradecimientos}
+El staff de el craneo feliz quiere darle la bienvenida a nuestro nuevo miembro \textbf{Ayathara}, quien se encargara de la dificil tarea de darnos a conocer al mundo.
+
+De igual forma queremos agradecer a:
+\begin{itemize}
+  \item Jose Luis
+  \item Fulanito
+  \item Sutanito
+  \item fulanita
+  \item Perengano
+\end{itemize}
 
 \tableofcontents
 
-\chapter{Literatura}
+\section{LITERATURA}
 \pagenumbering{arabic}
+\begin{center}
+  %\noindent\includegraphics[keepaspectratio,width=15cm]{literatura.png}
+\end{center}
 
 \articulo{¿Rol?¿Qué es eso?}{Jose Zarate}{https://www.facebook.com/joseluis.zarate.524}
-
-\begin{wrapfigure}{r}{0.5\textwidth}
-  \begin{center}
-    \includegraphics[width=0.48\textwidth]{logo.png}
-    \caption{Birds}
-  \end{center}
-\end{wrapfigure}
 
 Quizás estas leyendo por completista, por curiosidad o tal vez un amigo te mandó el archivo de la revista después de decirte “¡Mira, una revista de rol publicó mi trabajo!” y solo tienes una nebulosa idea de que entusiasma tanto a tu amistad. Algo con dados.
 
@@ -118,5 +148,41 @@ Esa es la formula básica que todos los juegos de rol siguen. A partir de ahí  
 También existen sistemas como “Vampire: The masquerade” que se enfoca en imaginar un mundo donde los jugadores encarnan a vampiros modernos envueltos en complejos juegos de política y brutalidad. “Call of Cthulhu” que esta fuertemente inspirado por los textos del autor H.P. Lovecraft y ahí los jugadores resuelven misterios mientras son acechados por bestias que amenazan a sus vidas y a sus corduras.
 
 Esto es una minúscula punta del iceberg, si puedes imaginar algo, probablemente exista un modo de convertirlo a un juego de rol. Si esto no te ha causado curiosidad, quizá al voltear la pagina encuentres algo que te llame a este mundo.
+
+\section{Staff}
+{\parindent0pt
+
+\textbf{\textit{El Craneo Felíz es traído a ti por los pequeños obreros:}}
+\begin{itemize}
+  \item Jefe de Redacción - Terry Vazquez
+  \item Redes y Medios - Ayathara
+  \item Editor Digital - Dark Skoll
+\end{itemize}
+
+\vspace{1em}
+
+\textbf{\textit{Nuestras Redes Sociales:}}
+
+\vspace{1em}
+
+\begin{tabular}{ l l }
+  \textbf{Facebook} & \url{www.facebook.com/elcraneofeliz}\\
+  \textbf{Instagram} & \url{www.instagram.com/el_craneo_feliz/}\\
+  \textbf{Issuu} & \url{issuu.com/elcraneofeliz}\\
+\end{tabular}
+
+\vspace{1em}
+
+\begin{center}
+  \textit{"No dejamos de jugar porque nos volvamos viejos, nos volvemos viejos porque dejamos de jugar"}
+\end{center}
+\begin{flushright}
+  \textit{- George Bernard Shaw}
+\end{flushright}
+
+\begin{center}
+  \includegraphics[keepaspectratio,width=8cm]{staff.png}
+\end{center}
+}
 
 \end{document}
