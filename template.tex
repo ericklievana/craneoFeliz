@@ -1,0 +1,122 @@
+\documentclass[a4paper]{report}
+
+\usepackage{anyfontsize}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{blindtext}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[fontsize=16]{fontsize}
+\usepackage{wrapfig}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\graphicspath{{./images/}{../logos/}}
+
+%Portada
+%Imagen de Bienvenida (Tengo tiempo)
+%Nota Editorial (Que pensamos este mes?)
+%Agradecimientos
+%Tabla de contenidos(Doble pagina)
+%Literatura
+%Grafica
+%Aventura
+%Informacion de la revista
+%Contraportada
+
+\titleformat{\section}
+{\huge\bfseries}
+{}
+{0em}
+{}
+[{\titlerule[0.4pt]}]
+
+\titleformat{\chapter}
+{\huge\bfseries\center}
+{}
+{0em}
+{}
+[{\titlerule[0.4pt]}]
+
+\titlespacing{\section}
+{0pt}
+{0pt}
+{1pt}
+
+\newlength{\myMheight}
+\settoheight{\myMheight}{M}
+
+\newcommand{\articulo}[3]{ \newpage
+\section{#1}
+\noindent
+{#2}
+\href{#3}{\includegraphics[height=\myMheight]{facebookLogo.png}}
+}
+
+\AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{portada.png}}}
+
+\begin{document}
+
+\newgeometry{margin=0cm}
+\pagenumbering{gobble}
+
+\begin{titlepage}
+  \begin{center}
+    \noindent
+    \includegraphics[width=\textwidth]{titulo.png}
+  \end{center}
+\end{titlepage}
+
+\restoregeometry
+
+{
+  \AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{paper.jpg}}}
+}
+
+\tableofcontents
+
+\chapter{Literatura}
+\pagenumbering{arabic}
+
+\articulo{¿Rol?¿Qué es eso?}{Jose Zarate}{https://www.facebook.com/joseluis.zarate.524}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{logo.png}
+    \caption{Birds}
+  \end{center}
+\end{wrapfigure}
+
+Quizás estas leyendo por completista, por curiosidad o tal vez un amigo te mandó el archivo de la revista después de decirte “¡Mira, una revista de rol publicó mi trabajo!” y solo tienes una nebulosa idea de que entusiasma tanto a tu amistad. Algo con dados.
+
+La frase juegos de rol, puede tomar formas distintas en la imaginación de muchos. Algunas menos publicables que otras. Cuando decimos juegos de rol nos referimos a lo que es comúnmente conocido como Tabletop Role-playing game o juego de interpretación de rol de mesa (el concepto de la mesa simplemente sirve para distinguirlo de otros tipos de rpg, como los videojuegos por ejemplo, la mesa es en realidad opcional).
+
+En un juego de rol los jugadores encarnan el rol (ergo el nombre) de un personaje de su creación y en conjunto van creando una historia.
+
+A diferencia de una obra de teatro donde hay un numero limitado de personajes predefinidos (puedes ser Hamlet o árbol numero 3) en un juego de rol los jugadores crean a estos personajes.
+
+Cada jugador elige la apariencia, actitudes, personalidad, creencias y mas de sus propios personajes. Se vuelve un ejercicio de creatividad y de experimentación. Desaparecidas están las limitantes físicas, no importa si no tienes una  musculatura similar a la de Schwarzenegger, puedes ser un guerrero bárbaro si eso deseas.
+
+Sin embargo, no todos los jugadores crearan un personaje. Uno de ellos tendrá la tarea de crear un mundo y una historia para que habiten los personajes de los jugadores. A esta persona se le conoce de muchos modos, pero comúnmente se les llama GM (game masters) o Narradores.
+
+Siguiendo la analogía del teatro, los personajes de los jugadores son los actores principales y el GM es el teatro mismo, con todos los atrezos y fondos de escenario que desee.
+
+Una partida de rol podría comenzar con el Narrador describiendo una situación:
+“Son las ultimas horas de la madrugada en los callejones mas profundos de la ciudad. Sus personajes caminan a través de las oscuras callejuelas, esquivando a estafadores, vendedores de fortunas y a otros habitantes nocturnos. Todo apunta a ser una noche como cualquier otra cuando repentinamente escuchan un grito desgarrador pidiendo auxilio de uno de los callejones
+¿Qué es lo que harán?”
+
+Y a partir de ahí, la historia comienza. No hay un guion a seguir, no existen respuestas correctas. Los jugadores pensaran en que harían sus personajes y se lo comunicaran al narrador que describirá que sucede con cada  acción que toman.
+
+Puede que decidan salir corriendo en busca de ayudar a esta persona que pide ayuda o quizá decidan ir de modo cuidadoso sospechando alguna trampa o truco.
+
+A través de esta situaciones y aventuras los jugadores improvisaran y actuaran los muchos modos en los que sus personajes reaccionarían y juntos desarrollaran una historia.
+
+“Juntos” es la palabra clave. A diferencia de muchos otros juegos aquí no hay una competencia por ver quien gana. No hay bandos. Todos en conjunto se esfuerzan por crear una historia interesante en la que exploran su creatividad y sus ideas. Puede que un narrador tenga una idea del comienzo de la historia, pero al final del día ni él sabe como terminara realmente. Eso es algo que solo podrán averiguar durante el juego.
+
+Esa es la formula básica que todos los juegos de rol siguen. A partir de ahí  empiezan las muchas variaciones traídas por los diferentes sistemas que se han creado a través de los años. Un sistema, en esencia es una serie de reglas enfocadas a ayudar a crear un tipo de experiencia. Por ejemplo, uno de los sistemas mas conocidos hoy en día es “Dungeons\&Dragons” (Calabozos y Dragones) que se enfoca en aventuras heroicas llenas de magia y elementos de la fantasía medieval.
+
+También existen sistemas como “Vampire: The masquerade” que se enfoca en imaginar un mundo donde los jugadores encarnan a vampiros modernos envueltos en complejos juegos de política y brutalidad. “Call of Cthulhu” que esta fuertemente inspirado por los textos del autor H.P. Lovecraft y ahí los jugadores resuelven misterios mientras son acechados por bestias que amenazan a sus vidas y a sus corduras.
+
+Esto es una minúscula punta del iceberg, si puedes imaginar algo, probablemente exista un modo de convertirlo a un juego de rol. Si esto no te ha causado curiosidad, quizá al voltear la pagina encuentres algo que te llame a este mundo.
+
+\end{document}
