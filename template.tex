@@ -3,7 +3,6 @@
 \usepackage{anyfontsize}
 \usepackage{fancyhdr}
 \usepackage[margin=2.5cm]{geometry}
-\usepackage{blindtext}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[fontsize=16]{fontsize}
@@ -14,7 +13,7 @@
 \usepackage{ragged2e}
 \usepackage{graphicx}
 \usepackage{titlesec}
-\graphicspath{{./images/}{../logos/}}
+\graphicspath{{./images/}}
 
 %Portada
 %Imagen de Bienvenida (Tengo tiempo)
@@ -35,6 +34,8 @@
 {0em}%space between number and title
 {}%
 [{\titlerule[3pt]}]%
+
+\newcommand{\sectionbreak}{\clearpage}
 
 \titleformat{\section}
 {\Huge\bfseries\center}
@@ -65,7 +66,7 @@
 \lfoot{}
 \cfoot{\normalsize\textbf{\thepage}}
 
-\newcommand{\articulo}[3]{ \pagebreak
+\newcommand{\articulo}[3]{\pagebreak
 \subsection{#1}
 \noindent
 \begin{flushright}
@@ -81,8 +82,9 @@
 \begin{document}
 
 \newgeometry{margin=0cm}
-\pagenumbering{gobble}
+\pagenumbering{Roman}
 
+\thispagestyle{empty}
 \begin{center}
   \noindent
   \includegraphics[width=\textwidth]{titulo.png}
@@ -92,10 +94,12 @@
 
 {\AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{paper2.png}}}}
 
-\section*{Nota Literaria}
+\section{Nota Literaria}
+\thispagestyle{empty}
 Buenas tardes, buenas noches, buenos dias, señoras y señores.
 
-\section*{Agradecimientos}
+\section{Agradecimientos}
+\thispagestyle{empty}
 El staff de el craneo feliz quiere darle la bienvenida a nuestro nuevo miembro \textbf{Ayathara}, quien se encargara de la dificil tarea de darnos a conocer al mundo.
 
 De igual forma queremos agradecer a:
@@ -108,6 +112,9 @@ De igual forma queremos agradecer a:
 \end{itemize}
 
 \tableofcontents
+\thispagestyle{empty}
+\pagebreak
+
 
 \section{LITERATURA}
 \pagenumbering{arabic}
