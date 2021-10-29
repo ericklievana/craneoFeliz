@@ -1,8 +1,7 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{report}
 
 \usepackage{anyfontsize}
-\usepackage{fancyhdr}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[fontsize=16]{fontsize}
@@ -28,7 +27,7 @@
 
 \urlstyle{same}
 
-\titleformat{\subsection}
+\titleformat{\section}
 {\huge\bfseries\center}%formatting
 {}%numbering
 {0em}%space between number and title
@@ -37,41 +36,28 @@
 
 \newcommand{\sectionbreak}{\clearpage}
 
-\titleformat{\section}
+\titleformat{\chapter}[display]
 {\Huge\bfseries\center}
 {}
 {0em}
 {}
 [{\titlerule[3pt]}]
 
-\titlespacing{\subsection}
-{0pt}
-{0pt}
-{0pt}
-
 \titlespacing{\section}
 {0pt}
 {0pt}
+{0pt}
+
+\titlespacing*{\chapter}
+{0pt}
+{1pt}
 {1em}
 
-%\newlength{\myMheight}
-%\settoheight{\myMheight}{M}
-
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt}
-\rhead{}
-\chead{}
-\lhead{}
-\rfoot{}
-\lfoot{}
-\cfoot{\normalsize\textbf{\thepage}}
-
-\newcommand{\articulo}[3]{\pagebreak
-\subsection{#1}
+\newcommand{\articulo}[3]{%\pagebreak
+\section{#1}
 \noindent
 \begin{flushright}
   \textbf{#2}
-  %\href{#3}{\includegraphics[height=\myMheight]{facebookLogo.png}}
   \href{#3}{\includegraphics[height=1em]{facebookLogo.png}}
 \end{flushright}
 }
@@ -80,26 +66,27 @@
 
 
 \begin{document}
-
-\newgeometry{margin=0cm}
-\pagenumbering{Roman}
-
-\thispagestyle{empty}
-\begin{center}
-  \noindent
-  \includegraphics[width=\textwidth]{titulo.png}
-\end{center}
+%PORTADA
+\begin{titlepage}
+  \newgeometry{margin=0cm}
+  \pagenumbering{gobble}
+  \begin{center}
+    \noindent
+    \includegraphics[width=\textwidth]{titulo.png}
+  \end{center}
+\end{titlepage}
 
 \restoregeometry
 
-{\AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{paper2.png}}}}
+{\AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{enmarcado.png}}}}
 
-\section{Nota Literaria}
-\thispagestyle{empty}
-Buenas tardes, buenas noches, buenos dias, señoras y señores.
+\chapter{Nota Literaria}
+\pagenumbering{Roman}
 
-\section{Agradecimientos}
-\thispagestyle{empty}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
+\chapter{Agradecimientos}
 El staff de el craneo feliz quiere darle la bienvenida a nuestro nuevo miembro \textbf{Ayathara}, quien se encargara de la dificil tarea de darnos a conocer al mundo.
 
 De igual forma queremos agradecer a:
@@ -112,14 +99,11 @@ De igual forma queremos agradecer a:
 \end{itemize}
 
 \tableofcontents
-\thispagestyle{empty}
-\pagebreak
 
-
-\section{LITERATURA}
+\chapter{Literatura}
 \pagenumbering{arabic}
 \begin{center}
-  %\noindent\includegraphics[keepaspectratio,width=15cm]{literatura.png}
+  \noindent\includegraphics[keepaspectratio,width=15cm]{logo.png}
 \end{center}
 
 \articulo{¿Rol?¿Qué es eso?}{Jose Zarate}{https://www.facebook.com/joseluis.zarate.524}
@@ -156,7 +140,9 @@ También existen sistemas como “Vampire: The masquerade” que se enfoca en im
 
 Esto es una minúscula punta del iceberg, si puedes imaginar algo, probablemente exista un modo de convertirlo a un juego de rol. Si esto no te ha causado curiosidad, quizá al voltear la pagina encuentres algo que te llame a este mundo.
 
-\section{Staff}
+\chapter{Staff}
+\setcounter{page}{5}
+\pagenumbering{Roman}
 {\parindent0pt
 
 \textbf{\textit{El Craneo Felíz es traído a ti por los pequeños obreros:}}
