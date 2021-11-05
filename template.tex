@@ -1,43 +1,50 @@
-\documentclass[a4paper]{report}
+\documentclass[draft]{report}
 
-\usepackage{anyfontsize}
-\usepackage[margin=1in]{geometry}
-\usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[fontsize=16]{fontsize}
+\usepackage[a4paper,margin=1in]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage{charter}
+\usepackage[fontsize=14]{fontsize}
 \usepackage{wrapfig}
-\usepackage[colorlinks=true,allcolors=black]{hyperref}
-\usepackage{ragged2e}
+\usepackage{utopia}
 \usepackage{graphicx}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
 \usepackage{titlesec}
+\usepackage{ragged2e}
+\usepackage{xifthen}
+\usepackage{xargs}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
 \graphicspath{{./images/}}
-
-%Portada
-%Imagen de Bienvenida (Tengo tiempo)
-%Nota Editorial (Que pensamos este mes?)
-%Agradecimientos
-%Tabla de contenidos(Doble pagina)
-%Literatura
-%Grafica
-%Aventura
-%Informacion de la revista
-%Contraportada
 
 \urlstyle{same}
 
+\setlength\parskip{1em}
+
+\newcommandx{\articulo}[6][3=,4=,5=,6=]{
+  \newpage
+  \section{#1}
+  \begin{flushright}
+    \textbf{#2}
+    \ifthenelse{
+      \isempty{#3}}
+    {}
+    {\href{#3}{\includegraphics[height=1em]{facebook.png}}}
+    \ifthenelse{
+      \isempty{#4}}
+    {}
+    {\href{#4}{\includegraphics[height=1em]{twitter.png}}}
+    \ifthenelse{
+      \isempty{#5}}
+    {}
+    {\href{#5}{\includegraphics[height=1em]{instagram.png}}}
+    \ifthenelse{
+      \isempty{#6}}
+    {}
+    {\href{#6}{\includegraphics[height=1em]{youtube.png}}}
+  \end{flushright}
+}
+
 \titleformat{\section}
-{\huge\bfseries\center}%formatting
-{}%numbering
-{0em}%space between number and title
-{}%
-[{\titlerule[3pt]}]%
-
-\newcommand{\sectionbreak}{\clearpage}
-
-\titleformat{\chapter}[display]
-{\Huge\bfseries\center}
+{\huge\bfseries\center}
 {}
 {0em}
 {}
@@ -46,125 +53,112 @@
 \titlespacing{\section}
 {0pt}
 {0pt}
-{0pt}
-
-\titlespacing*{\chapter}
-{0pt}
-{1pt}
 {1em}
 
-\newcommand{\articulo}[3]{%\pagebreak
-\section{#1}
-\noindent
-\begin{flushright}
-  \textbf{#2}
-  \href{#3}{\includegraphics[height=1em]{facebookLogo.png}}
-\end{flushright}
+\titleformat{\chapter}
+{\Huge\bfseries\center}
+{}
+{0em}
+{}
+[{\titlerule[3pt]}]
+
+\titlespacing{\chapter}
+{0pt}
+{-44pt}
+{1em}
+
+\newcommand{\ponerPortada}{
+  \AddToHook{shipout/background}{
+    \put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{portada.png}}
+  }
 }
 
-\AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{portada.png}}}
+\newcommand{\ponerFondo}{
+  \AddToHook{shipout/background}{
+    \put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{enmarcado.png}}
+  }
+}
 
+\newcommand{\ponerFondoSimple}{
+  \AddToHook{shipout/background}{
+    \put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{paper.jpg}}
+  }
+}
 
 \begin{document}
-%PORTADA
-\begin{titlepage}
-  \newgeometry{margin=0cm}
-  \pagenumbering{gobble}
-  \begin{center}
-    \noindent
-    \includegraphics[width=\textwidth]{titulo.png}
-  \end{center}
-\end{titlepage}
+\pagenumbering{alph}
+\newgeometry{margin=0cm}
+\thispagestyle{empty}
+%\ponerPortada
+
+\begin{center}
+  \includegraphics[width=\textwidth]{titulo.png}
+\end{center}
+
 
 \restoregeometry
-
-{\AddToHook{shipout/background}{\put(0in,-\paperheight){\includegraphics[width=\paperwidth,height=\paperheight]{enmarcado.png}}}}
-
-\chapter{Nota Literaria}
 \pagenumbering{Roman}
+%\ponerFondo
+\thispagestyle{empty}
+\hspace{0pt}
+\vfill
+\begin{center}
+  \includegraphics[width=\textwidth]{fantasma.png}
+\end{center}
+\vfill
+\hspace{0pt}
+
+\chapter{Nota Editorial}
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-
 \chapter{Agradecimientos}
-El staff de el craneo feliz quiere darle la bienvenida a nuestro nuevo miembro \textbf{Ayathara}, quien se encargara de la dificil tarea de darnos a conocer al mundo.
 
-De igual forma queremos agradecer a:
-\begin{itemize}
-  \item Jose Luis
-  \item Fulanito
-  \item Sutanito
-  \item fulanita
-  \item Perengano
-\end{itemize}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+\setlength{\parskip}{0em}
 \tableofcontents
+\setlength{\parskip}{1em}
 
-\chapter{Literatura}
+\chapter{LITERATURA}
 \pagenumbering{arabic}
+
 \begin{center}
-  \noindent\includegraphics[keepaspectratio,width=15cm]{logo.png}
+  \includegraphics[width=15cm,keepaspectratio]{literatura.png}
 \end{center}
 
-\articulo{¿Rol?¿Qué es eso?}{Jose Zarate}{https://www.facebook.com/joseluis.zarate.524}
+\chapter{GRÁFICA}
 
-Quizás estas leyendo por completista, por curiosidad o tal vez un amigo te mandó el archivo de la revista después de decirte “¡Mira, una revista de rol publicó mi trabajo!” y solo tienes una nebulosa idea de que entusiasma tanto a tu amistad. Algo con dados.
+\begin{center}
+  \noindent\includegraphics[width=15cm,keepaspectratio]{grafica.png}
+\end{center}
 
-La frase juegos de rol, puede tomar formas distintas en la imaginación de muchos. Algunas menos publicables que otras. Cuando decimos juegos de rol nos referimos a lo que es comúnmente conocido como Tabletop Role-playing game o juego de interpretación de rol de mesa (el concepto de la mesa simplemente sirve para distinguirlo de otros tipos de rpg, como los videojuegos por ejemplo, la mesa es en realidad opcional).
+\chapter{AVENTURA}
 
-En un juego de rol los jugadores encarnan el rol (ergo el nombre) de un personaje de su creación y en conjunto van creando una historia.
-
-A diferencia de una obra de teatro donde hay un numero limitado de personajes predefinidos (puedes ser Hamlet o árbol numero 3) en un juego de rol los jugadores crean a estos personajes.
-
-Cada jugador elige la apariencia, actitudes, personalidad, creencias y mas de sus propios personajes. Se vuelve un ejercicio de creatividad y de experimentación. Desaparecidas están las limitantes físicas, no importa si no tienes una  musculatura similar a la de Schwarzenegger, puedes ser un guerrero bárbaro si eso deseas.
-
-Sin embargo, no todos los jugadores crearan un personaje. Uno de ellos tendrá la tarea de crear un mundo y una historia para que habiten los personajes de los jugadores. A esta persona se le conoce de muchos modos, pero comúnmente se les llama GM (game masters) o Narradores.
-
-Siguiendo la analogía del teatro, los personajes de los jugadores son los actores principales y el GM es el teatro mismo, con todos los atrezos y fondos de escenario que desee.
-
-Una partida de rol podría comenzar con el Narrador describiendo una situación:
-“Son las ultimas horas de la madrugada en los callejones mas profundos de la ciudad. Sus personajes caminan a través de las oscuras callejuelas, esquivando a estafadores, vendedores de fortunas y a otros habitantes nocturnos. Todo apunta a ser una noche como cualquier otra cuando repentinamente escuchan un grito desgarrador pidiendo auxilio de uno de los callejones
-¿Qué es lo que harán?”
-
-Y a partir de ahí, la historia comienza. No hay un guion a seguir, no existen respuestas correctas. Los jugadores pensaran en que harían sus personajes y se lo comunicaran al narrador que describirá que sucede con cada  acción que toman.
-
-Puede que decidan salir corriendo en busca de ayudar a esta persona que pide ayuda o quizá decidan ir de modo cuidadoso sospechando alguna trampa o truco.
-
-A través de esta situaciones y aventuras los jugadores improvisaran y actuaran los muchos modos en los que sus personajes reaccionarían y juntos desarrollaran una historia.
-
-“Juntos” es la palabra clave. A diferencia de muchos otros juegos aquí no hay una competencia por ver quien gana. No hay bandos. Todos en conjunto se esfuerzan por crear una historia interesante en la que exploran su creatividad y sus ideas. Puede que un narrador tenga una idea del comienzo de la historia, pero al final del día ni él sabe como terminara realmente. Eso es algo que solo podrán averiguar durante el juego.
-
-Esa es la formula básica que todos los juegos de rol siguen. A partir de ahí  empiezan las muchas variaciones traídas por los diferentes sistemas que se han creado a través de los años. Un sistema, en esencia es una serie de reglas enfocadas a ayudar a crear un tipo de experiencia. Por ejemplo, uno de los sistemas mas conocidos hoy en día es “Dungeons\&Dragons” (Calabozos y Dragones) que se enfoca en aventuras heroicas llenas de magia y elementos de la fantasía medieval.
-
-También existen sistemas como “Vampire: The masquerade” que se enfoca en imaginar un mundo donde los jugadores encarnan a vampiros modernos envueltos en complejos juegos de política y brutalidad. “Call of Cthulhu” que esta fuertemente inspirado por los textos del autor H.P. Lovecraft y ahí los jugadores resuelven misterios mientras son acechados por bestias que amenazan a sus vidas y a sus corduras.
-
-Esto es una minúscula punta del iceberg, si puedes imaginar algo, probablemente exista un modo de convertirlo a un juego de rol. Si esto no te ha causado curiosidad, quizá al voltear la pagina encuentres algo que te llame a este mundo.
+\begin{center}
+  \noindent\includegraphics[width=15cm,keepaspectratio]{aventura.png}
+\end{center}
 
 \chapter{Staff}
-\setcounter{page}{5}
 \pagenumbering{Roman}
+\setcounter{page}{7}
 {\parindent0pt
 
 \textbf{\textit{El Craneo Felíz es traído a ti por los pequeños obreros:}}
 \begin{itemize}
-  \item Jefe de Redacción - Terry Vazquez
+  \item Jefe de Redacción e Ilustraciones - Terry Vazquez
   \item Redes y Medios - Ayathara
   \item Editor Digital - Dark Skoll
 \end{itemize}
 
-\vspace{1em}
-
 \textbf{\textit{Nuestras Redes Sociales:}}
-
-\vspace{1em}
 
 \begin{tabular}{ l l }
   \textbf{Facebook} & \url{www.facebook.com/elcraneofeliz}\\
   \textbf{Instagram} & \url{www.instagram.com/el_craneo_feliz/}\\
-  \textbf{Issuu} & \url{issuu.com/elcraneofeliz}\\
+  \textbf{Issuu} & \href{https://issuu.com/elcraneofeliz}{issuu.com/elcraneofeliz}\\
+  \textbf{Correo} & \href{mailto:conserjedelcalabozo@gmail.com}{conserjedelcalabozo@gmail.com}\\
 \end{tabular}
-
-\vspace{1em}
 
 \begin{center}
   \textit{"No dejamos de jugar porque nos volvamos viejos, nos volvemos viejos porque dejamos de jugar"}
@@ -174,8 +168,18 @@ Esto es una minúscula punta del iceberg, si puedes imaginar algo, probablemente
 \end{flushright}
 
 \begin{center}
-  \includegraphics[keepaspectratio,width=8cm]{staff.png}
+  \noindent\includegraphics[keepaspectratio,width=6cm]{staff.png}
 \end{center}
 }
 
+\newgeometry{margin=0cm}
+%\ponerFondoSimple
+\thispagestyle{empty}
+\hspace{0pt}
+\vfill
+\begin{center}
+  \noindent\includegraphics[width=\paperwidth]{contraportada.png}
+\end{center}
+\vfill
+\hspace{0pt}
 \end{document}

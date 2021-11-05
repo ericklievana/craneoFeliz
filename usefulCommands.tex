@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Requires background package%%%%%%%%%%
+\newcommand{\ponerPortada}{
+  \backgroundsetup{
+    scale=1,
+    angle=0,
+    opacity=1,
+    contents={\includegraphics[width=\paperwidth,height=\paperheight]{portada.png}}
+  }
+}
+
+\newcommand{\quitarPortada}{
+  \backgroundsetup{
+    scale=1,
+    angle=0,
+    opacity=1,
+    contents={}
+  }
+}
+
+\newcommand{\cambiarFondo}{
+  \backgroundsetup{
+    scale=1,
+    angle=0,
+    opacity=1,
+    contents={\includegraphics[width=\paperwidth,height=\paperheight]{rightbackground.jpg}}
+  }
+}
+
+\newcommand{\cambiarFondoAlternado}{
+  \AddEverypageHook{
+    \ifthenelse{\isodd{\value{page}}}
+    {\backgroundsetup{
+      scale=1,
+      angle=0,
+      opacity=1,
+      contents={\includegraphics[width=\paperwidth,height=\paperheight]{rightbackground.jpg}}
+    }}
+    {\backgroundsetup{
+      scale=1,
+      angle=0,
+      opacity=1,
+      contents={\includegraphics[width=\paperwidth,height=\paperheight]{leftbackground.jpg}}
+    }}\BgMaterial
+  }
+}
